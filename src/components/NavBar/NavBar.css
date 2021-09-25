@@ -1,0 +1,48 @@
+body,
+html {
+  font-family: "Raleway", sans-serif !important;
+  height: 100%;
+}
+
+/*Navigation header styling*/
+
+nav {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+.navbar-default {
+  background-color: #003355;
+}
+
+nav em {
+  color: #fff;
+  margin: 5px 5px 5px 5px;
+}
+
+.middle-heading {
+  margin: 5px 5px 5px 5px;
+}
+
+li .big-train {
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-header,
+.navbar-right {
+  display: inline-block;
+}
+
+.navbar-header i,
+.navbar-right i {
+  display: inline-block;
+  margin: 5px 5px 5px 5px;
+  color: #fff;
+}
+
+.navbar-header img,
+.navbar-right img {
+  margin: 5px 5px 5px 5px;
+}
