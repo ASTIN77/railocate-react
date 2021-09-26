@@ -1,0 +1,130 @@
+/* Results page - departure and delay boards styling*/
+.buffer {
+  padding: 0;
+  margin: 0;
+}
+.detailsBoard {
+  display: flex;
+  height: 100px;
+  flex-direction: column;
+  background-color: #003355;
+  color: #ffffff;
+  border-radius: 20px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.departureBoard {
+  display: table;
+  width: 100%;
+  background-color: #cfcfcf;
+  border: 1px solid #c3c3c3;
+  color: #000000;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 7px 7px 7px #c3c3c3;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.departureBoardHeader {
+  display: table-header-group;
+}
+.departureHeader-cell {
+  display: table-cell;
+  font-family: Helvetica, sans-serif;
+  font-size: 1.25em;
+  font-weight: bold;
+  background-color: #003355;
+  color: #ffffff;
+  vertical-align: middle;
+  text-align: center;
+  height: 50px;
+  border-bottom: 1px solid black;
+  width: 20%;
+}
+
+#departureBoardBody {
+  display: table-row-group;
+}
+
+.departureBoard-row {
+  display: table-row;
+  height: 50px;
+}
+
+.departureBoard-cell {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 20%;
+}
+
+.departureBoard-cell:nth-child(4) {
+  vertical-align: middle;
+  width: 40%;
+}
+
+.departureBoard-row:nth-child(2n + 2) {
+  background-color: #fff;
+}
+
+.delayBoard {
+  display: table;
+  width: 100%;
+  background-color: #cfcfcf;
+  color: #000000;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 7px 7px 7px #c3c3c3;
+  padding: 0;
+  margin: 0;
+}
+
+.delayBoardHeader {
+  display: table-header-group;
+}
+
+.delayHeader-cell {
+  display: table-cell;
+  font-family: Helvetica, sans-serif;
+  font-size: 1.25em;
+  font-weight: bold;
+  background-color: #fd9328;
+  color: #ffffff;
+  vertical-align: middle;
+  text-align: center;
+  height: 50px;
+}
+
+#delayBoardBody {
+  display: table-row-group;
+}
+
+.delayBoard-row {
+  display: table-row;
+  height: 50px;
+}
+
+.delayBoard-cell {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.boardMessages {
+  text-align: center;
+}
+
+.rounded {
+  border-radius: 20px;
+  margin: 30px 0;
+  font-weight: bold;
+  background-color: #003355;
+  border: 1px solid #003355;
+  box-shadow: 7px 7px 7px #c3c3c3;
+}
