@@ -1,0 +1,8 @@
+.NRE {
+  display: flex;
+  margin: 100px 25px auto;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  border-radius: 20px;
+}

@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import "./Search.css";
-import NRELogo from "../../images/NRE_Powered_logo.png";
 
 const Search = (props) => {
   return (
@@ -39,17 +38,6 @@ const Search = (props) => {
               value="Find Trains!"
             />
           </form>
-        </div>
-      </div>
-      <div className="container">
-        <div className="row">
-          <div className="NRE">
-            <img
-              className="img-reponsive"
-              src={NRELogo}
-              alt="Powered By National Rail Enquiries"
-            />
-          </div>
         </div>
       </div>
     </Fragment>
