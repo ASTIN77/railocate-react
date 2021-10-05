@@ -27,7 +27,7 @@ const Search = (props) => {
     let departing = enteredStationFrom,
       destination = enteredStationTo;
     let url =
-      "http://huxleyapp.azurewebsites.net/departures/" +
+      "https://huxleyapp.azurewebsites.net/departures/" +
       // "https://huxleyapp.herokuapp.com/" +
       departing +
       "/to/" +
