@@ -1,7 +1,66 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import Results from "../TrainResults/Results";
+import axios from "axios";
 import "./Search.css";
 
 const Search = (props) => {
+  const [enteredStationFrom, setEnteredStationFrom] = useState();
+  const [enteredStationTo, setEnteredStationTo] = useState();
+  const [trainResults, setTrainResults] = useState([]);
+  const [isValid, setIsValid] = useState(false);
+
+  const fromStationInputHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setEnteredStationFrom(event.target.value);
+      console.log(enteredStationFrom);
+    }
+  };
+
+  const toStationInputHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setEnteredStationTo(event.target.value);
+      console.log(enteredStationTo);
+    }
+  };
+
+  const searchSubmitHandler = (event) => {
+    event.preventDefault();
+
+    let departing = enteredStationFrom,
+      destination = enteredStationTo;
+    let url =
+      "http://huxleyapp.azurewebsites.net/departures/" +
+      // "https://huxleyapp.herokuapp.com/" +
+      departing +
+      "/to/" +
+      destination +
+      "/?accessToken=420b5ac9-3385-4b10-8419-5cfb557cfe2e&expand=true";
+
+    axios.get(url).then((res) => {
+      setTrainResults(res.data);
+    });
+    setIsValid(true);
+  };
+  // if (response.data) {
+  //   console.log(
+  //     "success",
+  //     "We have found matching results for your journey."
+  //   );
+
+  // setTrainResults(response.data);
+  // console.log(trainResults);
+  // } else {
+  //   console.log(
+  //     "I'm sorry, there are currently no direct services between these two stations.."
+  //   );
+  // }
+  // })
+  // .then((response) => setTrainResults(response.data))
+  // .then(console.log(trainResults))
+  // .catch(function (error) {
+  //   console.log("error", "Search criteria returned zero results");
+  // });
+
   return (
     <Fragment>
       <div className="trainHeadings">
@@ -14,23 +73,17 @@ const Search = (props) => {
       </div>
       <div className="container">
         <div className="form-group trainSearch">
-          <form action="/trains" method="POST">
+          <form onSubmit={(e) => searchSubmitHandler(e)}>
             <input
               type="text"
-              id="ajax"
-              list="json-datalist"
               className="findStation form-control"
-              name="departing"
+              onChange={fromStationInputHandler}
             />
-            <datalist id="json-datalist" />
             <input
               type="text"
-              id="ajax2"
-              list="json-datalist2"
               className="findStation form-control"
-              name="destination"
+              onChange={toStationInputHandler}
             />
-            <datalist id="json-datalist2" />
             <input
               id="findButton"
               className="form-control"
@@ -40,6 +93,7 @@ const Search = (props) => {
           </form>
         </div>
       </div>
+      {isValid ? <Results results={trainResults} /> : 0}
     </Fragment>
   );
 };

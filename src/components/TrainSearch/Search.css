@@ -59,11 +59,3 @@
   color: #fff;
   font-weight: bold;
 }
-.NRE {
-  display: flex;
-  margin: 20px auto;
-  flex-direction: row;
-  justify-content: space-around;
-  text-align: center;
-  border-radius: 20px;
-}

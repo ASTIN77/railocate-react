@@ -1,18 +1,26 @@
 import { Fragment } from "react";
+
 import "../TrainResults/Results.css";
 
 const Results = (props) => {
+  const services = props.results;
+  const listService = props.results.trainServices;
+  let listedServices = [];
+  for (let i in listService) {
+    listedServices.push([i, listService[i]]);
+  }
+  console.log(listedServices);
+
   return (
     <Fragment>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3 hidden-xs hidden-sm">
             <div className="detailsBoard">
-              <p>Depart : </p>
-              <p>Arrive : </p>
+              <p>Depart : {services.locationName} </p>
+              <p>Arrive : {services.filterLocationName}</p>
             </div>
           </div>
-
           <div className="col-md-6">
             <div className="departureBoard">
               <div className="departureBoardHeader"></div>
@@ -22,51 +30,19 @@ const Results = (props) => {
               <div className="departureHeader-cell hidden-xs hidden-sm">
                 Updates
               </div>
-              <div id="departureBoardBody">
-                <div className="departureBoard-row">
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell hidden-xs hidden-sm" />
-                </div>
-                <div className="departureBoard-row">
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell hidden-xs hidden-sm" />
-                </div>
-                <div className="departureBoard-row">
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell hidden-xs hidden-sm" />
-                </div>
-                <div className="departureBoard-row">
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell hidden-xs hidden-sm" />
-                </div>
-                <div className="departureBoard-row">
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell hidden-xs hidden-sm" />
-                </div>
-                <div className="departureBoard-row">
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell hidden-xs hidden-sm" />
-                </div>
-                <div className="departureBoard-row">
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell" />
-                  <div className="departureBoard-cell hidden-xs hidden-sm" />
-                </div>
-              </div>
             </div>
+          </div>
+          <div id="departureBoardBody">
+            {listedServices.map((data, key) => {
+              return (
+                <div className="departureBoard-row" key={key}>
+                  <div className="departureBoard-cell">{data[1].std}</div>
+                  <div className="departureBoard-cell">{data[1].etd}</div>
+                  <div className="departureBoard-cell">{data[1].platform}</div>
+                  <div className="departureBoard-cell hidden-xs hidden-sm"></div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="col-md-3">
