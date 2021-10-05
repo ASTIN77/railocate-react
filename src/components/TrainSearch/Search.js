@@ -12,14 +12,12 @@ const Search = (props) => {
   const fromStationInputHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setEnteredStationFrom(event.target.value);
-      console.log(enteredStationFrom);
     }
   };
 
   const toStationInputHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setEnteredStationTo(event.target.value);
-      console.log(enteredStationTo);
     }
   };
 

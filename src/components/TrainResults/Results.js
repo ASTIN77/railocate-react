@@ -30,19 +30,31 @@ const Results = (props) => {
               <div className="departureHeader-cell hidden-xs hidden-sm">
                 Updates
               </div>
+              <div id="departureBoardBody">
+                {listedServices.map((data, key) => {
+                  return (
+                    <div className="departureBoard-row" key={key}>
+                      <div className="departureBoard-cell">{data[1].std}</div>
+                      <div className="departureBoard-cell">{data[1].etd}</div>
+                      <div className="departureBoard-cell">
+                        {data[1].platform}
+                      </div>
+                      {services.isCancelled ? (
+                        <div className="departureBoard-cell hidden-xs hidden-sm">
+                          {services.cancelReason}
+                        </div>
+                      ) : services.delayReason ? (
+                        <div className="departureBoard-cell hidden-xs hidden-sm">
+                          {services.delayReason}
+                        </div>
+                      ) : (
+                        <div className="departureBoard-cell hidden-xs hidden-sm"></div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div id="departureBoardBody">
-            {listedServices.map((data, key) => {
-              return (
-                <div className="departureBoard-row" key={key}>
-                  <div className="departureBoard-cell">{data[1].std}</div>
-                  <div className="departureBoard-cell">{data[1].etd}</div>
-                  <div className="departureBoard-cell">{data[1].platform}</div>
-                  <div className="departureBoard-cell hidden-xs hidden-sm"></div>
-                </div>
-              );
-            })}
           </div>
 
           <div className="col-md-3">
