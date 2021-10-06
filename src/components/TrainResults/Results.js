@@ -9,8 +9,6 @@ const Results = (props) => {
   for (let i in listService) {
     listedServices.push([i, listService[i]]);
   }
-  console.log(listedServices);
-
   return (
     <Fragment>
       <div className="container-fluid">
@@ -64,8 +62,11 @@ const Results = (props) => {
               <div id="delayBoardBody">
                 <div className="delayBoard-row">
                   <div className="delayBoard-cell">
-                    {" "}
-                    No current delays via this route.
+                    {services.nrccMessages ? (
+                      <p>{services.nrccMessages[0].value}</p>
+                    ) : (
+                      <p>No current delays via this route.</p>
+                    )}
                   </div>
                 </div>
               </div>

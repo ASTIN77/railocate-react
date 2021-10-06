@@ -1,11 +1,19 @@
 import { Fragment, useState } from "react";
+import useAutocomplete from "use-autocomplete";
+import searchData from "../../Data/railRef";
 import Results from "../TrainResults/Results";
 import axios from "axios";
 import "./Search.css";
+import "../../Data/railRef";
 
 const Search = (props) => {
-  const [enteredStationFrom, setEnteredStationFrom] = useState();
-  const [enteredStationTo, setEnteredStationTo] = useState();
+  const [enteredStationFrom, setEnteredStationFrom] = useState("");
+  const [enteredStationTo, setEnteredStationTo] = useState("");
+  const [suggestedStationFrom] = useAutocomplete(
+    enteredStationFrom,
+    searchData
+  );
+
   const [trainResults, setTrainResults] = useState([]);
   const [isValid, setIsValid] = useState(false);
 
@@ -28,37 +36,33 @@ const Search = (props) => {
       destination = enteredStationTo;
     let url =
       "https://huxleyapp.azurewebsites.net/departures/" +
-      // "https://huxleyapp.herokuapp.com/" +
       departing +
       "/to/" +
       destination +
       "/?accessToken=420b5ac9-3385-4b10-8419-5cfb557cfe2e&expand=true";
 
-    axios.get(url).then((res) => {
-      setTrainResults(res.data);
-    });
-    setIsValid(true);
+    axios
+      .get(url)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data) {
+          console.log(
+            "success",
+            "We have found matching results for your journey."
+          );
+          setTrainResults(res.data);
+          setIsValid(true);
+          console.log(trainResults);
+        } else {
+          console.log("error", "Search criteria returned zero results");
+          console.log(trainResults);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.statusText);
+        setIsValid(false);
+      });
   };
-  // if (response.data) {
-  //   console.log(
-  //     "success",
-  //     "We have found matching results for your journey."
-  //   );
-
-  // setTrainResults(response.data);
-  // console.log(trainResults);
-  // } else {
-  //   console.log(
-  //     "I'm sorry, there are currently no direct services between these two stations.."
-  //   );
-  // }
-  // })
-  // .then((response) => setTrainResults(response.data))
-  // .then(console.log(trainResults))
-  // .catch(function (error) {
-  //   console.log("error", "Search criteria returned zero results");
-  // });
-
   return (
     <Fragment>
       <div className="trainHeadings">
@@ -76,11 +80,18 @@ const Search = (props) => {
               type="text"
               className="findStation form-control"
               onChange={fromStationInputHandler}
+              value={enteredStationFrom}
             />
+            <div className="findStation form-control">
+              {suggestedStationFrom.map((val, index) => (
+                <p key={index}>{val}</p>
+              ))}
+            </div>
             <input
               type="text"
               className="findStation form-control"
               onChange={toStationInputHandler}
+              value={enteredStationTo}
             />
             <input
               id="findButton"
