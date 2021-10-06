@@ -1,3 +1,8 @@
+# RaiLocate Real-Time UK Live Train Data
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1387895e-3a1e-44c3-b783-b35a488c9146/deploy-status)](https://app.netlify.com/sites/railocate-react/deploys)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
