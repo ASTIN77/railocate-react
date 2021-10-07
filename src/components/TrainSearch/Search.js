@@ -1,18 +1,15 @@
 import { Fragment, useState } from "react";
-import useAutocomplete from "use-autocomplete";
 import searchData from "../../Data/railRef";
 import Results from "../TrainResults/Results";
 import axios from "axios";
 import "./Search.css";
 import "../../Data/railRef";
 
+console.log(searchData);
+
 const Search = (props) => {
   const [enteredStationFrom, setEnteredStationFrom] = useState("");
   const [enteredStationTo, setEnteredStationTo] = useState("");
-  const [suggestedStationFrom] = useAutocomplete(
-    enteredStationFrom,
-    searchData
-  );
 
   const [trainResults, setTrainResults] = useState([]);
   const [isValid, setIsValid] = useState(false);
@@ -82,11 +79,6 @@ const Search = (props) => {
               onChange={fromStationInputHandler}
               value={enteredStationFrom}
             />
-            <div className="findStation form-control">
-              {suggestedStationFrom.map((val, index) => (
-                <p key={index}>{val}</p>
-              ))}
-            </div>
             <input
               type="text"
               className="findStation form-control"

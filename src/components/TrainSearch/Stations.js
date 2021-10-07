@@ -1,4 +1,6 @@
-const Stations = [
+import searchData from "../../Data/railRef";
+
+const SearchData = [
   "Abbey Wood",
   "Aber",
   "Abercynon",
@@ -2542,8 +2544,10 @@ const Stations = [
   "Yetminster",
   "Ynyswen",
   "Yoker",
-  "Ystrad Rhondd",
   "York",
   "Yorton",
   "Ystrad Mynach",
+  "Ystrad Rhondd",
 ];
+
+export default searchData;
