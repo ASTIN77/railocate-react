@@ -1,5 +1,4 @@
 import { Fragment, useState } from "react";
-import searchData from "../../Data/railRef";
 import Results from "../TrainResults/Results";
 import axios from "axios";
 import "./Search.css";
