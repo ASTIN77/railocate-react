@@ -7,7 +7,6 @@ import "../../Data/railRef";
 const Search = (props) => {
   const [enteredStationFrom, setEnteredStationFrom] = useState("");
   const [enteredStationTo, setEnteredStationTo] = useState("");
-
   const [trainResults, setTrainResults] = useState([]);
   const [isValid, setIsValid] = useState(false);
 

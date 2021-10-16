@@ -1,14 +1,20 @@
 import { Fragment } from "react";
+import { ReactHtmlParser } from "react-html-parser";
 
 import "../TrainResults/Results.css";
 
 const Results = (props) => {
   const services = props.results;
   const listService = props.results.trainServices;
+  let serviceMessage;
   let listedServices = [];
   for (let i in listService) {
     listedServices.push([i, listService[i]]);
   }
+  if (services.nrccMessages) {
+    serviceMessage = services.nrccMessages[0].value;
+  }
+
   return (
     <Fragment>
       <div className="container-fluid">
@@ -37,13 +43,13 @@ const Results = (props) => {
                       <div className="departureBoard-cell">
                         {data[1].platform}
                       </div>
-                      {services.isCancelled ? (
+                      {data[1].isCancelled ? (
                         <div className="departureBoard-cell hidden-xs hidden-sm">
-                          {services.cancelReason}
+                          {data[1].cancelReason}
                         </div>
-                      ) : services.delayReason ? (
+                      ) : data[1].delayReason ? (
                         <div className="departureBoard-cell hidden-xs hidden-sm">
-                          {services.delayReason}
+                          {data[1].delayReason}
                         </div>
                       ) : (
                         <div className="departureBoard-cell hidden-xs hidden-sm"></div>
@@ -62,8 +68,12 @@ const Results = (props) => {
               <div id="delayBoardBody">
                 <div className="delayBoard-row">
                   <div className="delayBoard-cell">
+                    {}
                     {services.nrccMessages ? (
-                      <p>{services.nrccMessages[0].value}</p>
+                      // <p>{services.nrccMessages[0].value}</p>
+                      <p
+                        dangerouslySetInnerHTML={{ __html: serviceMessage }}
+                      ></p>
                     ) : (
                       <p>No current delays via this route.</p>
                     )}
